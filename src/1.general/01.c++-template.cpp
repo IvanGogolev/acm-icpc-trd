@@ -1,52 +1,124 @@
-#include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp> // gp_hash_table<int, int> == hash map
-#include <ext/pb_ds/tree_policy.hpp>
+#pragma GCC optimize("O3,unroll-loops")
+#define _CRT_SECURE_NO_WARNINGS
+#define ln '\n'
+#define All(x) (x).begin(), (x).end()
+#define Allr(x) (x).rbegin(), (x).rend()
+#define Allf(x) x.begin() + 1, x.end()
+#define fi(a, b) for (auto i = (a); i <= (b); i++)
+#define fj(a, b) for (auto j = (a); j <= (b); j++)
+#define fo(a, b) for (auto o = (a); o <= (b); o++)
+#define fq(a, b) for (auto q = (a); q <= (b); q++)
+#define fe(a, b) for (auto e = (a); e <= (b); e++)
+#define fw(a, b) for (auto w = (a); w <= (b); w++)
+#define fdi(a, b) for (auto i = (a); i >= (b); i--)
+#define fdj(a, b) for (auto j = (a); j >= (b); j--)
+#define fdo(a, b) for (auto o = (a); o >= (b); o--)
+#define fdq(a, b) for (auto q = (a); q >= (b); q--)
+#define fde(a, b) for (auto e = (a); e >= (b); e--)
+#define fdw(a, b) for (auto w = (a); w >= (b); w--)
+#define fx(A) for (auto &x : (A))
+#define fy(A) for (auto &y : (A))
+#define fz(A) for (auto &z : (A))
+#define pb push_back
+#define mp make_pair
+#define ins insert
+#define sz(x) (int)x.size()
+#include <string>
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
+#include <cstring>
+#include <cmath>
+#include <cstdarg>
+#include <cassert>
+#include <ctime>
+#include <tuple>
+#include <unordered_set>
+#include <unordered_map>
+#include <random>
+#include <chrono>
+#include <complex>
 using namespace std;
-using namespace __gnu_pbds;
+#ifdef _DEBUG
+#define LOCAL
+#endif
+mt19937_64 rnd(chrono::steady_clock::now().time_since_epoch().count());
 typedef long long ll;
 typedef unsigned long long ull;
 typedef long double ld;
+typedef vector<bool> vb;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+typedef vector<ld> vd;
+typedef vector<char> vc;
+typedef vector<string> vs;
+typedef vector<vb> vvb;
+typedef vector<vi> vvi;
+typedef vector<vll> vvll;
+typedef vector<vc> vvc;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
-typedef pair<double, double> pdd;
-template <typename T> using min_heap = priority_queue<T, vector<T>, greater<T>>;
-template <typename T> using max_heap = priority_queue<T, vector<T>, less<T>>;
-template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>; 
-template <typename K, typename V> using hashmap = gp_hash_table<K, V>;
-
-template<typename A, typename B> ostream& operator<<(ostream& out, pair<A, B> p) { out << "(" << p.first << ", " << p.second << ")"; return out;}
-template<typename T> ostream& operator<<(ostream& out, vector<T> v) { out << "["; for(auto& x : v) out << x << ", "; out << "]";return out;}
-template<typename T> ostream& operator<<(ostream& out, set<T> v) { out << "{"; for(auto& x : v) out << x << ", "; out << "}"; return out; }
-template<typename K, typename V> ostream& operator<<(ostream& out, map<K, V> m) { out << "{"; for(auto& e : m) out << e.first << " -> " << e.second << ", "; out << "}"; return out; }
-template<typename K, typename V> ostream& operator<<(ostream& out, hashmap<K, V> m) { out << "{"; for(auto& e : m) out << e.first << " -> " << e.second << ", "; out << "}"; return out; }
-
-#define FAST_IO ios_base::sync_with_stdio(false); cin.tie(NULL)
-#define TESTS(t) int NUMBER_OF_TESTS; cin >> NUMBER_OF_TESTS; for(int t = 1; t <= NUMBER_OF_TESTS; t++)
-#define FOR(i, begin, end) for (int i = (begin) - ((begin) > (end)); i != (end) - ((begin) > (end)); i += 1 - 2 * ((begin) > (end)))
-#define sgn(a)     ((a) > eps ? 1 : ((a) < -eps ? -1 : 0))
-#define precise(x) fixed << setprecision(x)
-#define debug(x) cerr << "> " << #x << " = " << x << endl;
-#define pb push_back
-#define rnd(a, b) (uniform_int_distribution<int>((a), (b))(rng))
-#ifndef LOCAL
-    #define cerr if(0)cout
-    #define endl "\n"
+template<typename A, typename B>
+ostream& operator<<(ostream& os, pair<A, B> p) {
+    os << "(" << p.first << ", " << p.second << ")";
+    return os;
+}
+template<typename T>
+ostream& operator<<(ostream& os, vector<T> v) {
+    fi(0, sz(v) - 1) {
+        os << v[i] << " ";
+    }
+    return os;
+}
+template<typename T>
+ostream& operator<<(ostream& os, set<T> t) {
+    for (auto z : t) {
+        os << z << " ";
+    }
+    return os;
+}
+template<typename T1, typename T2>
+ostream& operator<<(ostream& os, map<T1, T2> t) {
+    cerr << endl;
+    for (auto z : t) {
+        os << "\t" << z.first << " -> " << z.second << endl;
+    }
+    return os;
+}
+#ifdef LOCAL
+#define dbg(x) {cerr << __LINE__ << "\t" << #x << ": " << (x) << endl;}
+#else
+#define dbg(x) {}
 #endif
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-clock_t __clock__;
-void startTime() {__clock__ = clock();}
-void timeit(string msg) {cerr << "> " << msg << ": " << precise(6) << ld(clock()-__clock__)/CLOCKS_PER_SEC << endl;}
-const ld PI = asin(1) * 2;
-const ld eps = 1e-14;
-const int oo = 2e9;
-const ll OO = 2e18;
-const ll MOD = 1000000007;
-const int MAXN = 1000000;
+#ifdef LOCAL
+#define ass(x) if (!(x)) { cerr << __LINE__ << "\tassertion failed: " << #x << endl, abort(); }
+#else
+#define ass(x) assert(x)
+#endif
+void solve() {
 
-int main() {
-    FAST_IO;
-    startTime();
-    
-    timeit("Finished");
-    return 0;
+}
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cout << setprecision(20);
+    #ifdef LOCAL
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
+    #endif
+    solve();        
 }

@@ -1,0 +1,13 @@
+We say first circle center at point $(0,0)$. Line is $(A,B,C)$.
+Find 
+$x_0 = \frac{-AC}{A^2 + B^2}$
+
+$y_0 = \frac{-BC}{A^2 + B^2}$
+
+If dist from $(x_0, y_0)$ to $(0,0)$ is bigger than $r$ then answer is zero. Otherwise if it equals to $r$ then answer is $(x_0, y_0)$. Otherwise we have $2$ solutions:
+$d = \sqrt{r^2 - \frac{C^2}{A^2+B^2}}$
+$V = \sqrt{\frac{d^2}{A^2+B^2}}$
+$a_x = x_0 + BV$
+$a_y = y_0 - AV$
+$b_x = x_0 - BV$
+$b_y = y_0 + AV$ 

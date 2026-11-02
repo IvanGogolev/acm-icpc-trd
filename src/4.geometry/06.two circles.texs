@@ -1,0 +1,13 @@
+We have to find all tangent lines to two circles. First circle is at $(0,0)$. 
+
+We say first circle center at point $(0,0)$.
+$x^2 + y^2 = r_{1}^2$
+$(x-x_2)^2 + (y - y_2)^2  = r_{2}^2$
+
+$x^2 + y^2 = r_{1}^2$
+$x (-2x_2) + y (-2y_2) + (x_{2}^2 + y_{2}^2 + r_{1}^2 + r_{2}^2) = 0$
+Now we have new task to find intersection of line and circle:
+$Ax + By + C = 0$,
+$A = -2x_2$,
+$B = -2y_2$,
+$C = x_{2}^2 + y_{2}^2 + r_{1}^2 - r_{2}^2$

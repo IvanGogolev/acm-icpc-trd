@@ -1,0 +1,25 @@
+\textbf{function} circulation$(V, E)$:
+
+\quad $G' = (V \cup s \cup t, \varnothing)$
+
+\quad \textbf{for} $e \in E$ \textbf{do}
+
+\qquad $g = \text{Edge}(s, e.\text{to}, 0, e.\text{minCap})$
+
+\qquad $h = \text{Edge}(e.\text{from}, e.\text{to}, 0, e.\text{maxCap} - e.\text{minCap})$
+
+\qquad $k = \text{Edge}(e.\text{from}, t, 0, e.\text{minCap})$
+
+\qquad $G' = G' \cup (\varnothing, \cup g \cup h \cup k)$
+
+
+\quad $\text{maxFlow} = \text{getMaxFlow}(G')$
+
+\quad \textbf{for} $e \in E'$ \textbf{and} $e.\text{from} = s$ \textbf{do}
+
+\qquad \textbf{if} $f(e) < e.\text{maxCap}$ \textbf{then}
+
+\qquad\quad \textbf{return} false
+
+
+\quad \textbf{return} true
